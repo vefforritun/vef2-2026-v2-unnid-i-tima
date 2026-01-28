@@ -63,6 +63,7 @@ export async function init(): Promise<boolean> {
       created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     )
   */
+ return false
 }
 
 /**
@@ -71,6 +72,22 @@ export async function init(): Promise<boolean> {
  */
 export async function listTodos(): Promise<Todo[] | null> {
   // SELECT id, title, finished FROM todos ORDER BY finished ASC, created DESC
+
+  //const todos: Todo[] = [
+  //  { title: 'verkefni1', finished: true},
+  //  { title: 'verkefni2'},
+  //  { title: 'verkefni3'}
+  //]
+//
+  //return todos;
+
+  const results = await query('SELECT id, title, finished FROM todos ORDER BY finished ASC, created DESC');
+
+  if (results) {
+    return results.rows as Todo[];
+  }
+
+  return null
 }
 
 /**
@@ -80,6 +97,7 @@ export async function listTodos(): Promise<Todo[] | null> {
  */
 export async function createTodo(title: string): Promise<Todo | null> {
   // INSERT INTO todos (title) VALUES ($1) RETURNING id, title, finished
+    return null
 }
 
 /**
@@ -95,6 +113,7 @@ export async function updateTodo(
   finished: boolean,
 ): Promise<Todo | null> {
   // UPDATE todos SET title = $1, finished = $2 WHERE id = $3 RETURNING id, title, finished
+    return null
 }
 
 /**
@@ -104,6 +123,7 @@ export async function updateTodo(
  */
 export async function deleteTodo(id: number): Promise<boolean | null> {
   // DELETE FROM todos WHERE id = $1
+    return null
 }
 
 /**
@@ -112,4 +132,5 @@ export async function deleteTodo(id: number): Promise<boolean | null> {
  */
 export async function deleteFinishedTodos(): Promise<number | null> {
   // DELETE FROM todos WHERE finished = true
+    return null
 }

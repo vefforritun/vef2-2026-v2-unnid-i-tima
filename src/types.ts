@@ -1,1 +1,4 @@
-export type Todo = {};
+export type Todo = {
+    title: string;
+    finished?: boolean;
+};
